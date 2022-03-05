@@ -11,14 +11,14 @@ export const CardFaces = Object.freeze({
   J: "J",
   Q: "Q",
   K: "K",
-  A: "A"
-})
-
-export const CardSuits = Object.freeze({
-  "HEARTS": "Hearts",
-  "DIAMONDS": "Diamonds",
-  "SPADES": "Spades",
-  "CLUBS": "Clubs",
+  A: "A",
 });
 
-export const skipCards = [CardFaces[4], CardFaces.J]
+export const CardSuits = Object.freeze({
+  HEARTS: "Hearts",
+  DIAMONDS: "Diamonds",
+  SPADES: "Spades",
+  CLUBS: "Clubs",
+});
+
+export const skipCards = [CardFaces[4], CardFaces.J];

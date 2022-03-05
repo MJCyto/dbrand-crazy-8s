@@ -1,7 +1,7 @@
-class InvalidStateError extends Error{
-    constructor(message) {
-        super(message);
-    }
+class InvalidStateError extends Error {
+  constructor(message) {
+    super(message);
+  }
 }
 
-export default InvalidStateError
+export default InvalidStateError;

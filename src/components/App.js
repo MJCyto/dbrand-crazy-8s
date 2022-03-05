@@ -1,37 +1,41 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import routes from "../constants/routes";
 import HomeScreen from "./home/HomeScreen";
 import GameScreen from "./game/GameScreen";
-import NavigationBar from "./NavigationBar";
 import styled from "styled-components";
-import { PageContext } from "../stateHandling/PageContext";
 
 const Wrapper = styled.div``;
 
-const PageSelector = () => {
-  const { currRoute } = useContext(PageContext);
-  const { gameRoute } = routes;
-
-  switch (currRoute) {
-    case gameRoute: {
-      return <GameScreen />;
-    }
-    default: {
-      return <HomeScreen />;
-    }
-  }
-};
-
 const App = () => {
-  const [currRoute, setCurrRoute] = useState(routes.homeRoute);
-
+  const { homeRoute, gameRoute } = routes;
   return (
-    <Wrapper>
-      <PageContext.Provider value={{ currRoute, setCurrRoute }}>
-        <NavigationBar />
-        <PageSelector />
-      </PageContext.Provider>
-    </Wrapper>
+    <div>
+      <BrowserRouter>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to={homeRoute}>Dingus</Link>
+              </li>
+              <li>
+                <Link to={gameRoute}>Game</Link>
+              </li>
+            </ul>
+          </nav>
+          <Routes>
+            <Route path={homeRoute} element={<HomeScreen />} />
+            <Route path={gameRoute} element={<GameScreen />} />
+          </Routes>
+          {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        </div>
+      </BrowserRouter>
+      {/*/!*<PageContext.Provider value={{ currRoute, setCurrRoute }}>*!/*/}
+      {/*<NavigationBar />*/}
+      {/*<PageSelector />*/}
+      {/*/!*</PageContext.Provider>*!/*/}
+    </div>
   );
 };
 export default App;

@@ -12,15 +12,19 @@ const HomeScreen = () => {
   const playerCards = useSelector(selectPlayerCards);
   const deckCards = useSelector(selectDeckCards);
 
-console.log(playerCards)
-    console.log(deckCards)
+  console.log(playerCards);
+  console.log(deckCards);
   return (
     <Wrapper>
       <input value={numCards} onChange={e => setNumCards(e.target.value)} />
-      <div onClick={() => {
-          dispatch(initGame(numCards, () => {}))
-          console.log(numCards)
-      }}>OKAY</div>
+      <div
+        onClick={() => {
+          dispatch(initGame(numCards, () => {}));
+          console.log(numCards);
+        }}
+      >
+        OKAY
+      </div>
     </Wrapper>
   );
 };

@@ -1,15 +1,23 @@
 import routes from "../../constants/routes";
 import { PageContext } from "../../stateHandling/PageContext";
 import { useContext } from "react";
+import styled from "styled-components";
+import CardPile from "./CardPile";
+import PlayerHand from "./PlayerHand";
+import HiddenCardContext from "../../stateHandling/hiddenCardContext";
+import EnemyHand from "./EnemyHand";
+
+const Wrapper = styled.div``;
 
 const GameScreen = () => {
-  const { currRoute, setCurrRoute } = useContext(PageContext);
-
   return (
-    <div
-      style={{ height: 100, width: 100, backgroundColor: "blue" }}
-      onClick={() => setCurrRoute(routes.homeRoute)}
-    />
+    <Wrapper>
+      <HiddenCardContext.Provider>
+        <EnemyHand />
+        <CardPile />
+      </HiddenCardContext.Provider>
+      <PlayerHand />
+    </Wrapper>
   );
 };
 

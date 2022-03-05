@@ -19,9 +19,7 @@ export const initGame = createAction("game/init", (numCards, setEnemyCards, setD
 });
 
 // For the player's moves
-export const playCard = createAction("game/", (card) => {
-
-})
+export const playCard = createAction("game/", card => {});
 
 const initialState = Object.freeze({
   playerCards: [],
@@ -33,16 +31,16 @@ const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
-    replenishPile: (state) => {
-      if (state.playedCards <= 1){
-        return
+    replenishPile: state => {
+      if (state.playedCards <= 1) {
+        return;
       }
 
-      let cardsToMove = state.playedCards.splice(0, state.playedCards.length - 1)
-      state.deckCards = [...shuffle(cardsToMove), ...state.deckCards]
+      let cardsToMove = state.playedCards.splice(0, state.playedCards.length - 1);
+      state.deckCards = [...shuffle(cardsToMove), ...state.deckCards];
     },
     // For the enemies moves, since we're using context for the enemy cards
-    pushCard: () => {}
+    pushCard: () => {},
   },
   extraReducers: builder => {
     builder.addCase(initGame, (state, action) => {
